@@ -11,23 +11,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{858FA502-D085-4721-AE37-8613BE7A74B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livros.Domain", "Livros.Domain\Livros.Domain.csproj", "{5C3FE85C-1FF8-4E56-9A45-42889802C58F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Livros.Domain", "Livros.Domain\Livros.Domain.csproj", "{5C3FE85C-1FF8-4E56-9A45-42889802C58F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{1B792FA1-3264-488A-BDA2-62D1B110755C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livros.Data", "Livros.Data\Livros.Data.csproj", "{ACA7262A-1014-48E6-8CE5-3CF2D945EC36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Livros.Data", "Livros.Data\Livros.Data.csproj", "{ACA7262A-1014-48E6-8CE5-3CF2D945EC36}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{D12E3DD4-485E-468C-AC05-01C738F154FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livros.IoC", "Livros.IoC\Livros.IoC.csproj", "{154B168A-D273-4C21-94B8-3EBBB400B62D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Livros.IoC", "Livros.IoC\Livros.IoC.csproj", "{154B168A-D273-4C21-94B8-3EBBB400B62D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livros.Domain.Core", "Livros.Domain.Core\Livros.Domain.Core.csproj", "{A3E9082C-3E7C-408C-B022-0A7C8BDACAEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Livros.Domain.Core", "Livros.Domain.Core\Livros.Domain.Core.csproj", "{A3E9082C-3E7C-408C-B022-0A7C8BDACAEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livros.Application", "Livros.Application\Livros.Application.csproj", "{DFB28A80-1F05-4D97-9075-57D30B6462A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Livros.Application", "Livros.Application\Livros.Application.csproj", "{DFB28A80-1F05-4D97-9075-57D30B6462A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livros.API", "Livros.API\Livros.API.csproj", "{35B38401-6DB0-4D31-9BA9-89572E0B3BB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Livros.API", "Livros.API\Livros.API.csproj", "{35B38401-6DB0-4D31-9BA9-89572E0B3BB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livros.Bus", "Livros.Bus\Livros.Bus.csproj", "{D5575AD1-5776-4C51-9433-AA12C3DDDEBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Livros.Bus", "Livros.Bus\Livros.Bus.csproj", "{D5575AD1-5776-4C51-9433-AA12C3DDDEBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livros.Authentication", "Livros.Authentication\Livros.Authentication.csproj", "{CB08E987-E38F-46CC-A1AA-DC7253464BC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{D5575AD1-5776-4C51-9433-AA12C3DDDEBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5575AD1-5776-4C51-9433-AA12C3DDDEBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5575AD1-5776-4C51-9433-AA12C3DDDEBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB08E987-E38F-46CC-A1AA-DC7253464BC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB08E987-E38F-46CC-A1AA-DC7253464BC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB08E987-E38F-46CC-A1AA-DC7253464BC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB08E987-E38F-46CC-A1AA-DC7253464BC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +83,7 @@ Global
 		{DFB28A80-1F05-4D97-9075-57D30B6462A8} = {5D034710-F8A7-4C99-8286-2A28CB100C01}
 		{35B38401-6DB0-4D31-9BA9-89572E0B3BB6} = {58DD5D1D-F48D-46F0-8FE1-97C47AE484C4}
 		{D5575AD1-5776-4C51-9433-AA12C3DDDEBD} = {D12E3DD4-485E-468C-AC05-01C738F154FD}
+		{CB08E987-E38F-46CC-A1AA-DC7253464BC0} = {D12E3DD4-485E-468C-AC05-01C738F154FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {41F821E0-5AB2-4216-9894-73F915590293}

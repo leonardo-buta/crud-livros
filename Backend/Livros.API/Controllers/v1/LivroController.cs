@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Livros.API.Controllers.v1
 {
+    [Authorize]
     [Route("[controller]")]
     [ApiVersion("1.0")]
     public class LivroController : Controller

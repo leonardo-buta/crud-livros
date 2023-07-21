@@ -21,10 +21,10 @@
             <td>{{livro.autor}}</td>
             <td>{{livro.categoria}}</td>
             <td style="white-space: nowrap">
-                <a routerLink="edit/{{livro.id}}" class="btn btn-sm btn-primary me-1">Edit</a>
+                <a routerLink="edit/{{livro.id}}" class="btn btn-sm btn-primary me-1">Editar</a>
                 <button (click)="deleteLivro(livro.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="livro.isDeleting">
                     <span *ngIf="livro.isDeleting" class="spinner-border spinner-border-sm"></span>
-                    <span *ngIf="!livro.isDeleting">Delete</span>
+                    <span *ngIf="!livro.isDeleting">Deletar</span>
                 </button>
             </td>
         </tr>

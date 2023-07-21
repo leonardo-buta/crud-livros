@@ -1,16 +1,12 @@
 using Livro.Data.Context;
 using Livros.API.Configurations;
 using Livros.IoC;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -19,6 +15,8 @@ builder.Services.AddDbContext<LivrosDbContext>(opt => opt.UseInMemoryDatabase("I
 NativeInjectorBootStrapper.RegisterServices(builder.Services);
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+builder.Services.AddCustomizedAuth(builder.Configuration);
 
 builder.Services.AddCors(options =>
 {
@@ -45,7 +43,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors("Cors");
-app.UseAuthorization();
+app.UseCustomizedAuth();
 
 app.MapControllers();
 

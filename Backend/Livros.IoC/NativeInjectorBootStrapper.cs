@@ -1,5 +1,7 @@
 ﻿using Livros.Application.Interfaces;
 using Livros.Application.Services;
+using Livros.Authentication.Authorization;
+using Livros.Authentication.Services;
 using Livros.Bus;
 using Livros.Data.Repository;
 using Livros.Data.UoW;
@@ -8,13 +10,8 @@ using Livros.Domain.Commands;
 using Livros.Domain.Core.Bus;
 using Livros.Domain.Interfaces;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Livros.IoC
 {
@@ -22,27 +19,26 @@ namespace Livros.IoC
     {
         public static void RegisterServices(IServiceCollection services)
         {
-            // Domain Bus (Mediator)
+            // (Mediator)
             services.AddScoped<IMediatorHandler, InMemoryBus>();
 
-            // ASP.NET Authorization Polices
-            //services.AddSingleton<IAuthorizationHandler, ClaimsRequirementHandler>();
+            // Authorization
+            services.AddSingleton<IAuthorizationHandler, ClaimsRequirementHandler>();
 
             // Application
             services.AddScoped<ILivroAppService, LivroAppService>();
 
-            // Domain - Commands
+            // Commands
             services.AddScoped<IRequestHandler<RegisterNewLivroCommand, bool>, LivroCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateLivroCommand, bool>, LivroCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveLivroCommand, bool>, LivroCommandHandler>();
 
-            // Infra - Data
+            // Data
             services.AddScoped<ILivroRepository, LivroRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            // Infra - Identity
-            //services.AddScoped<IUser, AspNetUser>();
-            //services.AddSingleton<IJwtFactory, JwtFactory>();
+            // JWT
+            services.AddSingleton<IJwtFactory, JwtFactory>();
         }
     }
 }

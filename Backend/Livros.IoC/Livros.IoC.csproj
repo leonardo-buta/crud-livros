@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Livros.Application\Livros.Application.csproj" />
+    <ProjectReference Include="..\Livros.Authentication\Livros.Authentication.csproj" />
     <ProjectReference Include="..\Livros.Bus\Livros.Bus.csproj" />
     <ProjectReference Include="..\Livros.Data\Livros.Data.csproj" />
     <ProjectReference Include="..\Livros.Domain\Livros.Domain.csproj" />
