@@ -9,6 +9,7 @@ import { HomeComponent } from './home';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthInterceptor } from './shared/authconfig.interceptor';
 import { SigninComponent } from './signin/signin.component';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,12 @@ import { SigninComponent } from './signin/signin.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    { 
+      provide: JWT_OPTIONS,
+      useValue: JWT_OPTIONS
+    },
+    JwtHelperService
   ],
   bootstrap: [AppComponent]
 })
