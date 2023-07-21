@@ -6,6 +6,7 @@ import {
 } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 const baseUrl = `${environment.apiUrl}/User`;
 
@@ -17,7 +18,7 @@ export class AuthService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
 
-  constructor(private http: HttpClient, public router: Router) {}
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService, public router: Router) {}
 
   signIn(user: User) {
     return this.http
@@ -35,7 +36,7 @@ export class AuthService {
 
   get isLoggedIn(): boolean {
     let authToken = localStorage.getItem('access_token');
-    return authToken !== null;
+    let tokenExpired = this.jwtHelper.isTokenExpired(authToken);
+    return authToken !== null && !tokenExpired;
   }
-
 }

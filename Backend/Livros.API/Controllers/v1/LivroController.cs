@@ -40,8 +40,9 @@ namespace Livros.API.Controllers.v1
         }
 
         [HttpPut("{id:int}")]
-        public IActionResult Put([FromBody] LivroDTO livroDTO)
+        public IActionResult Put(int id, [FromBody] LivroDTO livroDTO)
         {
+            livroDTO.Id = id;
             _livroAppService.Update(livroDTO);
             return Ok();
         }
