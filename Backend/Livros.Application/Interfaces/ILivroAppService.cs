@@ -5,7 +5,7 @@ namespace Livros.Application.Interfaces
     public interface ILivroAppService : IDisposable
     {
         void Register(LivroDTO livroViewModel);
-        IEnumerable<LivroDTO> GetAll();
+        Task<List<LivroDTO>> GetAll();
         LivroDTO GetById(int id);
         void Update(LivroDTO livroViewModel);
         void Remove(int id);

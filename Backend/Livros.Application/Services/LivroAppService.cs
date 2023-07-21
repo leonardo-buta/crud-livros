@@ -5,6 +5,7 @@ using Livros.Application.Interfaces;
 using Livros.Domain.Commands;
 using Livros.Domain.Core.Bus;
 using Livros.Domain.Interfaces;
+using MediatR;
 
 namespace Livros.Application.Services
 {
@@ -13,19 +14,24 @@ namespace Livros.Application.Services
         private readonly IMapper _mapper;
         private readonly ILivroRepository _livroRepository;
         private readonly IMediatorHandler Bus;
+        private readonly IMediator _mediator;
 
         public LivroAppService(IMapper mapper,
                                ILivroRepository livroRepository,
-                               IMediatorHandler bus)
+                               IMediatorHandler bus,
+                               IMediator mediator)
         {
             _mapper = mapper;
             _livroRepository = livroRepository;
             Bus = bus;
+            _mediator = mediator;
         }
 
-        public IEnumerable<LivroDTO> GetAll()
+        public async Task<List<LivroDTO>> GetAll()
         {
-            return _livroRepository.GetAll().ProjectTo<LivroDTO>(_mapper.ConfigurationProvider);
+            var getCommand = new GetListLivrosQuery();
+            var data = await _mediator.Send(getCommand);
+            return _mapper.Map<List<LivroDTO>>(data);
         }
 
         public LivroDTO GetById(int id)

@@ -1,4 +1,5 @@
-﻿using Livros.Application.Interfaces;
+﻿using Livros.Application.DTO;
+using Livros.Application.Interfaces;
 using Livros.Application.Services;
 using Livros.Authentication.Authorization;
 using Livros.Authentication.Services;
@@ -9,9 +10,11 @@ using Livros.Domain.CommandHandlers;
 using Livros.Domain.Commands;
 using Livros.Domain.Core.Bus;
 using Livros.Domain.Interfaces;
+using Livros.Domain.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace Livros.IoC
 {
@@ -32,6 +35,7 @@ namespace Livros.IoC
             services.AddScoped<IRequestHandler<RegisterNewLivroCommand, bool>, LivroCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateLivroCommand, bool>, LivroCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveLivroCommand, bool>, LivroCommandHandler>();
+            services.AddScoped<IRequestHandler<GetListLivrosQuery, List<Livros.Domain.Models.Livro>>, LivroCommandHandler>();
 
             // Data
             services.AddScoped<ILivroRepository, LivroRepository>();
@@ -39,6 +43,9 @@ namespace Livros.IoC
 
             // JWT
             services.AddSingleton<IJwtFactory, JwtFactory>();
+
+            // Redis
+            services.AddScoped<IRedisCacheService, RedisCacheService>();
         }
     }
 }

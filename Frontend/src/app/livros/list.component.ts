@@ -22,10 +22,9 @@ export class ListComponent implements OnInit {
     }
 
     deleteLivro(id: string) {
-        const livro = this.livros!.find(x => x.id === id);
         this.livroService.delete(id)
             .pipe(first())
-            .subscribe(() => this.livros = this.livros!.filter(x => x.id !== id));
+            .subscribe(() => this.livrosFiltrados = this.livrosFiltrados!.filter(x => x.id !== id));
     }
 
     applyFilter(event: Event): void {
