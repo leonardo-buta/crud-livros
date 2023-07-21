@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark px-3">
+  <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a class="nav-item nav-link" routerLink="/livros" routerLinkActive="active">Livros</a>
+  </div>
+</nav>
+<div class="app-container bg-light">
+  <alert></alert>
+  <router-outlet></router-outlet>
+</div>
+<div class="text-center mt-4">
+  <p>
+      Angular - CRUD Livros
+  </p>
+</div>

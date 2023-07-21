@@ -1,0 +1,37 @@
+﻿<h1>Livros</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Adicionar Livro</a>
+<br>
+<div class="col-md-4">
+    <input type="text" class="form-control" placeholder="Buscar" (keyup)="applyFilter($event)">
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Id</th>
+            <th style="width: 30%">Nome</th>
+            <th style="width: 30%">Autor</th>
+            <th style="width: 30%">Categoria</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let livro of livrosFiltrados">
+            <td>{{livro.id}}</td>
+            <td>{{livro.nome}}</td>
+            <td>{{livro.autor}}</td>
+            <td>{{livro.categoria}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{livro.id}}" class="btn btn-sm btn-primary me-1">Edit</a>
+                <button (click)="deleteLivro(livro.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="livro.isDeleting">
+                    <span *ngIf="livro.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!livro.isDeleting">Delete</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!livros">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
